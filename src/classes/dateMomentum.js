@@ -58,7 +58,7 @@ export default class DateMomentum{
             this.body.style.opacity = '0'
             setTimeout(()=>{
             this.body.style.background = `url("/src/assets/images/${timesOfDay.toLowerCase()}/${image}.jpg")`;
-            this.body.style.opacity = ''
+            this.body.style.opacity  = ''
                 
             }, 500)
     }
