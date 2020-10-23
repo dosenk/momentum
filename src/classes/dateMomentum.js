@@ -55,12 +55,8 @@ export default class DateMomentum{
     // })
     displayMainImage = (timesOfDay, image) => {
             this.helloBlock.innerText = 'Good ' + timesOfDay + ',';
-            this.body.style.opacity = '0'
-            setTimeout(()=>{
-            this.body.style.background = `url("/src/assets/images/${timesOfDay.toLowerCase()}/${image}.jpg")`;
-            this.body.style.opacity  = ''
-                
-            }, 500)
+            // this.body.style.opacity = '0'
+            this.body.style.backgroundImage = `url("/src/assets/images/${timesOfDay.toLowerCase()}/${image}.jpg")`;
     }
 
     setHelloImgOfDay = (objTime) => {
@@ -82,7 +78,7 @@ export default class DateMomentum{
         }
 
         if (objTime.minute === 0 && objTime.second === 0) {
-            console.log(objTime);
+            console.log(objTime, timesOfDay);
             this.objTime = objTime
             this.displayMainImage(timesOfDay.toLowerCase(), this.ArrForImg[0])
             this.changeArrForImg()
@@ -117,15 +113,13 @@ export default class DateMomentum{
     setListener = () => {
         let hour = this.objTime.hour
         this.nextImgBlock.addEventListener('click', (e)=> {
-            // console.log(this.ArrForImg);
-            hour += 1
+            if (hour >= 23) hour = -1
+            hour++
             let objTime = {
-                hour:  hour, //=== '24' ? '0' : this.ArrForImg[0],
+                hour:  hour,
                 minute: 0,
                 second: 0,
             }
-            if (hour === 23) hour = -1
-            // this.changeArrForImg()
             this.setHelloImgOfDay(objTime)
         })
     }

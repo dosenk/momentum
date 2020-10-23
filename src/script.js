@@ -1,18 +1,18 @@
 // DOM Elements
-const time = document.querySelector('.time'),
-  greeting = document.querySelector('.greeting'),
-  name = document.querySelector('.name'),
-  focus = document.querySelector('.focus');
+const time = document.querySelector('.time');
+const greeting = document.querySelector('.greeting');
+const name = document.querySelector('.name');
+const focus = document.querySelector('.focus');
 
 // Options
 const showAmPm = true;
 
 // Show Time
 function showTime() {
-  let today = new Date(),
-    hour = today.getHours(),
-    min = today.getMinutes(),
-    sec = today.getSeconds();
+  const today = new Date();
+  let hour = today.getHours();
+  const min = today.getMinutes();
+  const sec = today.getSeconds();
 
   // Set AM or PM
   const amPm = hour >= 12 ? 'PM' : 'AM';
@@ -22,7 +22,7 @@ function showTime() {
 
   // Output Time
   time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(
-    sec
+    sec,
   )} ${showAmPm ? amPm : ''}`;
 
   setTimeout(showTime, 1000);
@@ -35,23 +35,20 @@ function addZero(n) {
 
 // Set Background and Greeting
 function setBgGreet() {
-  let today = new Date(),
-    hour = today.getHours();
+  const today = new Date();
+  const hour = today.getHours();
 
   if (hour < 12) {
     // Morning
-    document.body.style.backgroundImage =
-      "url('https://i.ibb.co/7vDLJFb/morning.jpg')";
+    document.body.style.backgroundImage = "url('https://i.ibb.co/7vDLJFb/morning.jpg')";
     greeting.textContent = 'Good Morning, ';
   } else if (hour < 18) {
     // Afternoon
-    document.body.style.backgroundImage =
-      "url('https://i.ibb.co/3mThcXc/afternoon.jpg')";
+    document.body.style.backgroundImage = "url('https://i.ibb.co/3mThcXc/afternoon.jpg')";
     greeting.textContent = 'Good Afternoon, ';
   } else {
     // Evening
-    document.body.style.backgroundImage =
-      "url('https://i.ibb.co/924T2Wv/night.jpg')";
+    document.body.style.backgroundImage = "url('https://i.ibb.co/924T2Wv/night.jpg')";
     greeting.textContent = 'Good Evening, ';
     document.body.style.color = 'white';
   }

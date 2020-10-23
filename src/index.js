@@ -1,4 +1,5 @@
 import './style.scss';
+import './classes/quote.js';
 import Person from './classes/person.js';
 import DateMomentum from './classes/dateMomentum.js';
 
@@ -28,7 +29,7 @@ const renderingDom = () => {
   const body = document.querySelector('body');
   const bodyBackground = createElem('div', null, 'bodyBackground');
   const bodyWrapper = createElem('div', null, 'momentum');
-  const bodyButton = createElem('button', null, 'change-button');
+  const bodyButton = createElem('button', 'change image', 'change-button');
   const bodyWrapperTime = createElem('div', null, 'momentum__time');
   const bodyWrapperDate = createElem('div', null, 'momentum__date');
   const bodyWrapperHello = createElem('div', null, 'momentum__hello');
