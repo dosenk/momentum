@@ -11,21 +11,22 @@ export default class Person {
     this.name.textContent = localStorage.getItem('name');
   }
   return name
-}
+};
 
   setName = (e) => {
+    // console.log();
+    let name = localStorage.getItem('name')
   if (e.type === 'keypress') {
     if (e.which == 13 || e.keyCode == 13) {
       if (e.target.innerText.trim() === '') {
-        e.target.innerText = localStorage.getItem('name');
+        e.target.innerText = name;
       } else {
       localStorage.setItem('name', e.target.innerText);
     }
       this.name.blur();
     }
   } else {
-    // localStorage.setItem('name', e.target.innerText);
-    e.target.innerText = localStorage.getItem('name');
+    e.target.innerText = name !== null ? name : '[Enter Name]';
   }
 }
 
@@ -64,6 +65,7 @@ addedListeners = () => {
   this.focus.addEventListener('keypress', this.setFocus);
   this.focus.addEventListener('blur', this.setFocus);
   this.name.addEventListener('click', (event) => {
+
 
     event.target.innerText = ''
   });

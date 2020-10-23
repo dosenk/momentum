@@ -7,9 +7,10 @@ export default class DateMomentum{
         this.dateBlock = document.querySelector('.momentum__date')
         this.helloBlock = document.querySelector('.momentum__hello_greeting')
         this.nextImgBlock = document.querySelector('.change-button')
-        this.body = document.querySelector('body')
+        this.body = document.querySelector('.bodyBackground')
         this.firsLoad = true
         this.ArrForImg = this.getArrForImg()
+        this.counterForChangeImg = 0
     }
 
     getRealTime = () => {
@@ -49,7 +50,19 @@ export default class DateMomentum{
         this.setHelloImgOfDay(objTime)
         return time;
     }
-    
+    // setTimeout(()=>{
+        
+    // })
+    displayMainImage = (timesOfDay, image) => {
+            this.helloBlock.innerText = 'Good ' + timesOfDay + ',';
+            this.body.style.opacity = '0'
+            setTimeout(()=>{
+            this.body.style.background = `url("/src/assets/images/${timesOfDay.toLowerCase()}/${image}.jpg")`;
+            this.body.style.opacity = ''
+                
+            }, 500)
+    }
+
     setHelloImgOfDay = (objTime) => {
         
         let timesOfDay;
@@ -70,14 +83,14 @@ export default class DateMomentum{
 
         if (objTime.minute === 0 && objTime.second === 0) {
             console.log(objTime);
-            this.helloBlock.innerText = 'Good ' + timesOfDay + ','
-            this.body.style.background = `url("/src/assets/images/${timesOfDay.toLowerCase()}/${this.ArrForImg[0]}.jpg")`
+            this.objTime = objTime
+            this.displayMainImage(timesOfDay.toLowerCase(), this.ArrForImg[0])
             this.changeArrForImg()
         }
 
         if (this.firsLoad) {
-            this.helloBlock.innerText = 'Good ' + timesOfDay + ','
-            this.body.style.background = `url("/src/assets/images/${timesOfDay.toLowerCase()}/${this.ArrForImg[0]}.jpg")`
+            this.objTime = objTime
+            this.displayMainImage(timesOfDay.toLowerCase(), this.ArrForImg[0])
             this.firsLoad = false
             this.changeArrForImg()
         }
@@ -86,51 +99,32 @@ export default class DateMomentum{
     }
 
     getArrForImg = () => {
-        let arr = [[],[],[],[]]
         let arrMain = []
         let num
-        for (let i = 1; i <= 24; i++) {
+        for (let i = 1; i <= 20; i++) {
             if (i < 10) num = (`0${i}`)
             else num = i
-            console.log(num);
-            if (i>=1 && i<= 5) {
-                arr[0].push(`${num}`)
-            }
-            if (i>=6 && i<= 12) {
-                arr[1].push(`${num}`)
-            }
-            if (i>=13 && i<= 18) {
-                arr[2].push(`${num}`)
-            }
-            if (i>=19 && i<= 24) {
-                arr[3].push(`${num}`)
-            }
+            arrMain.push(num)
         }
-        arr.forEach(item => {
-            console.log(item);
-            item.sort(() => Math.random() - 0.5);
-            item.forEach(num => {
-                arrMain.push(num)
-            })
-        })
-        console.log(arrMain);
-        return arrMain
+        return arrMain.sort(() => Math.random() - 0.5);
     }
 
     changeArrForImg = () => {
         let first = this.ArrForImg.shift()
-        // console.log(first);
         this.ArrForImg.push(first)
     }
 
     setListener = () => {
+        let hour = this.objTime.hour
         this.nextImgBlock.addEventListener('click', (e)=> {
-            console.log(this.ArrForImg);
+            // console.log(this.ArrForImg);
+            hour += 1
             let objTime = {
-                hour:  this.ArrForImg[0], //=== '24' ? '0' : this.ArrForImg[0],
+                hour:  hour, //=== '24' ? '0' : this.ArrForImg[0],
                 minute: 0,
                 second: 0,
             }
+            if (hour === 23) hour = -1
             // this.changeArrForImg()
             this.setHelloImgOfDay(objTime)
         })
