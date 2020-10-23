@@ -1,0 +1,52 @@
+{
+  "name": "momentum",
+  "version": "1.0.0",
+  "description": "momentum",
+  "private": "true",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx cross-env NODE_ENV=development webpack --mode development",
+    "build": "npx cross-env NODE_ENV=prodaction webpack --mode production",
+    "watch": "npx cross-env NODE_ENV=development webpack --mode development --watch",
+    "start": "npx cross-env NODE_ENV=development webpack-dev-server --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dosenk/momentum.git"
+  },
+  "author": "Dmitry Osipenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dosenk/momentum/issues"
+  },
+  "homepage": "https://github.com/dosenk/momentum#readme",
+  "browserslist": "> 0.25%, not dead",
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^6.2.1",
+    "cross-env": "^7.0.2",
+    "css-loader": "^4.3.0",
+    "eslint": "^7.11.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "file-loader": "^6.1.0",
+    "html-loader": "^1.3.1",
+    "html-webpack-plugin": "^4.5.0",
+    "mini-css-extract-plugin": "^0.11.3",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^10.0.2",
+    "style-loader": "^1.3.0",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "normalize.css": "^8.0.1",
+    "reset-css": "^5.0.1"
+  }
+}

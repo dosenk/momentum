@@ -1,0 +1,87 @@
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 20px;
+  font-weight: 700;
+  flex-direction: column;
+  row-gap: 15px;
+  // background: url("/src/assets/images/day/01.jpg") no-repeat;
+  color: black;
+  .momentum {
+    width: 500px;
+    height: 500px;
+    background-color: aqua;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 40px;
+    &__time {
+      // width: 100%;
+      height: 100px;
+    }
+    &__hello,
+    &__focus {
+      width: 400px;
+      height: 100px;
+      //   background-color: aliceblue;
+      text-align: center;
+      & span {
+        display: inline-block;
+        width: 200px;
+        &:nth-child(2) {
+          &:focus {
+            border-bottom: 1px solid gray;
+            outline-style: none;
+          }
+          &:hover {
+            border-bottom: 1px solid gray;
+            cursor: pointer;
+          }
+          &::placeholder {
+            // outline: none;
+            // outline-style: none;
+          }
+        }
+      }
+    }
+    &__focus {
+      width: 500px;
+      height: 100px;
+      //   background-color: aliceblue;
+      & span {
+        display: inline-block;
+        width: 500px;
+        &:nth-child(2) {
+          &:focus {
+            border-bottom: 1px solid gray;
+            outline-style: none;
+          }
+          &:hover {
+            border-bottom: 1px solid white;
+            cursor: pointer;
+          }
+          &::placeholder {
+            // outline: none;
+            // outline-style: none;
+          }
+        }
+      }
+    }
+  }
+  .change-button {
+    width: 200px;
+    height: 100px;
+    border-radius: 15px;
+    &:focus {
+      outline-style: none;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
