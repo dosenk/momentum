@@ -35,13 +35,13 @@ module.exports = {
       filename: isDev ? '[name].css' : '[name].[contenthash].css',
       chunkFilename: isDev ? '[id].css' : '[id].[contenthash].css',
     }),
-    // new CopyPlugin(
-    //   // {
-    //   // patterns: [
-    //   //   { from: './src/assets/images/pets', to: './images/pets' },
-    //   // ],
-    // // }
-    // ),
+    new CopyPlugin(
+      {
+      patterns: [
+        { from: './src/assets/images/icons', to: './images/icons' },
+      ],
+    }
+    ),
   ],
   module: {
     rules: [
@@ -70,14 +70,18 @@ module.exports = {
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
         loader: 'file-loader',
-        options: {
-          name: '[name].[ext]',
-          outputPath: 'images',
-        },
+        // options: {
+        //   name: '[name].[ext]',
+        //   // outputPath: 'images',
+        // },
       },
       {
         test: /\.html$/i,
         loader: 'html-loader',
+      },
+      {
+        test: /\.(ttf|woff|woff2|eot)$/i,
+        loader: 'file-loader',
       },
       {
         test: /\.m?js$/,

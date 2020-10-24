@@ -15,7 +15,7 @@ export default class Person {
 
   setName = (e) => {
     // console.log();
-    let name = localStorage.getItem('name')
+    let name = ' ' + localStorage.getItem('name')
   if (e.type === 'keypress') {
     if (e.which == 13 || e.keyCode == 13) {
       if (e.target.innerText.trim() === '') {

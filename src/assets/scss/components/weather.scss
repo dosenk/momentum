@@ -1,0 +1,39 @@
+.weather {
+  position: absolute;
+  max-width: 400px;
+  height: 60px;
+  top: 0;
+  right: 0;
+  margin-right: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  &-description {
+    font-weight: 400;
+    font-size: 17px;
+  }
+  .temp {
+    width: 150px;
+    display: flex;
+    column-gap: 10px;
+    justify-content: flex-end;
+  }
+  .city {
+    height: 40px;
+    white-space: nowrap;
+    overflow: hidden;
+    position: absolute;
+    right: 160px;
+    &:focus {
+      border-bottom: 2px solid white;
+      outline-style: none;
+      width: 200px;
+    }
+    &:hover {
+      border-bottom: 2px solid white;
+      cursor: pointer;
+    }
+  }
+}

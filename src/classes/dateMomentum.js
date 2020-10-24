@@ -1,4 +1,3 @@
-
 export default class DateMomentum{
     static map = new Map(); 
 
@@ -50,13 +49,16 @@ export default class DateMomentum{
         this.setHelloImgOfDay(objTime)
         return time;
     }
-    // setTimeout(()=>{
-        
-    // })
+
     displayMainImage = (timesOfDay, image) => {
             this.helloBlock.innerText = 'Good ' + timesOfDay + ',';
-            // this.body.style.opacity = '0'
-            this.body.style.backgroundImage = `url("/src/assets/images/${timesOfDay.toLowerCase()}/${image}.jpg")`;
+            let src = `/src/assets/images/${timesOfDay.toLowerCase()}/${image}.jpg`
+            const img = document.createElement('img');
+            img.src = src;
+            img.onload = () => {    
+                this.body.style.backgroundImage = `url(${src})`;  
+                // body.style.backgroundImage = `url(${src})`;
+            }; 
     }
 
     setHelloImgOfDay = (objTime) => {

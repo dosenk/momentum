@@ -9,61 +9,72 @@ body {
   font-weight: 700;
   flex-direction: column;
   row-gap: 15px;
+  text-shadow: 1px 1px 2px black, 0 0 1em gray;
 
-  // background: url("/src/assets/images/day/01.jpg") no-repeat;
   color: bisque;
   .momentum {
-    width: 500px;
+    width: 750px;
     height: 500px;
-    // background-color: aqua;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     row-gap: 40px;
+    color: #ffffff;
+    &__content_dateTime {
+      width: 750px;
+    }
     &__time {
-      // width: 100%;
-      height: 100px;
+      font-size: 160px;
     }
-    &__hello,
+    &__hello {
+      font-size: 45px;
+      color: bisque;
+      width: 600px;
+      height: 110px;
+      white-space: nowrap;
+      & span {
+        display: inline-block;
+        &:nth-child(1) {
+          width: 350px;
+        }
+        &:nth-child(2) {
+          max-width: 300px;
+          &:focus {
+            border-bottom: 2px solid #ffffff;
+            outline-style: none;
+          }
+          &:hover {
+            border-bottom: 2px solid #ffffff;
+            cursor: pointer;
+          }
+          &::placeholder {
+            // outline: none;
+            // outline-style: none;
+          }
+        }
+      }
+    }
     &__focus {
-      width: 400px;
-      height: 100px;
-      //   background-color: aliceblue;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 600px;
+      height: 200px;
       text-align: center;
+      justify-content: space-between;
       & span {
         display: inline-block;
-        width: 200px;
-        &:nth-child(2) {
-          &:focus {
-            border-bottom: 1px solid gray;
-            outline-style: none;
-          }
-          &:hover {
-            border-bottom: 1px solid gray;
-            cursor: pointer;
-          }
-          &::placeholder {
-            // outline: none;
-            // outline-style: none;
-          }
+        &:nth-child(1) {
+          width: 500px;
         }
-      }
-    }
-    &__focus {
-      width: 500px;
-      height: 100px;
-      //   background-color: aliceblue;
-      & span {
-        display: inline-block;
-        width: 500px;
         &:nth-child(2) {
           &:focus {
-            border-bottom: 1px solid gray;
+            border-bottom: 2px solid #ffffff;
             outline-style: none;
           }
           &:hover {
-            border-bottom: 1px solid white;
+            border-bottom: 2px solid #ffffff;
             cursor: pointer;
           }
           &::placeholder {
@@ -74,58 +85,14 @@ body {
       }
     }
   }
-  .change-button {
-    width: 200px;
-    height: 100px;
-    border-radius: 15px;
-    &:focus {
-      outline-style: none;
-    }
-    &:hover {
-      cursor: pointer;
-    }
-  }
+
   .bodyBackground {
     position: absolute;
     width: 100%;
     height: 100%;
+    background-size: cover;
+    background-position: center center;
     z-index: -1;
     transition: background-image 1s ease-in-out;
-  }
-  .quote {
-    font: 1.2rem Georgia, serif;
-    margin: 0;
-    background: #eee;
-    padding: 1em;
-    border-radius: 1em;
-
-    figcaption,
-    blockquote {
-      margin: 1em;
-    }
-    figcaption {
-      text-align: right;
-    }
-  }
-  .btn {
-    width: 60px;
-    height: 60px;
-    border: 0;
-    border-radius: 50%;
-    background-image: url("https://www.pngarts.com/files/7/Update-Button-PNG-Image.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    filter: grayscale(0.8);
-    margin: 10px;
-    &:hover {
-      filter: grayscale(0.2);
-    }
-    &:active,
-    .btn:focus {
-      outline: 0;
-    }
-    &:active {
-      transform: scale(1.02);
-    }
   }
 }
