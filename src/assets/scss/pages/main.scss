@@ -13,7 +13,7 @@ body {
 
   color: bisque;
   .momentum {
-    width: 750px;
+    width: 850px;
     height: 500px;
     display: flex;
     align-items: center;
@@ -22,39 +22,52 @@ body {
     row-gap: 40px;
     color: #ffffff;
     &__content_dateTime {
+      margin: 0 auto;
       width: 750px;
+      height: 240px;
     }
     &__time {
       font-size: 160px;
+      height: 170px;
+    }
+    &__date {
+      height: 40px;
     }
     &__hello {
       font-size: 45px;
-      color: bisque;
-      width: 600px;
+      color: aquamarine;
+      // width: 600px;
       height: 110px;
       white-space: nowrap;
       overflow: hidden;
-
-      & span {
-        display: inline-block;
-        &:nth-child(1) {
-          width: 350px;
+      display: flex;
+      &_greeting {
+        width: 380px;
+        display: inline;
+        text-align: right;
+        margin-right: 10px;
+      }
+      &_name {
+        // text-align: ;
+        // width: 300px;
+        max-width: 400px;
+        display: inline;
+        position: relative;
+        white-space: nowrap;
+        &:focus,
+        &:active {
+          border-bottom: 2px solid #ffffff;
+          outline-style: none;
+          min-width: 200px;
+          width: 100%;
         }
-        &:nth-child(2) {
-          max-width: 300px;
-          &:focus {
-            border-bottom: 2px solid #ffffff;
-            outline-style: none;
-            min-width: 200px;
-          }
-          &:hover {
-            border-bottom: 2px solid #ffffff;
-            cursor: pointer;
-          }
-          &::placeholder {
-            // outline: none;
-            // outline-style: none;
-          }
+        &:hover {
+          border-bottom: 2px solid #ffffff;
+          cursor: pointer;
+        }
+        &::placeholder {
+          // outline: none;
+          // outline-style: none;
         }
       }
     }

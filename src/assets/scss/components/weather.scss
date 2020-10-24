@@ -25,16 +25,20 @@
   .city {
     height: 40px;
     white-space: nowrap;
-    overflow: hidden;
     position: absolute;
     right: 160px;
+    width: 5em;
+    transition: all 0.5s;
+    text-align: right;
     &:focus {
-      border-bottom: 2px solid white;
+      border-bottom: 1px solid white;
       outline-style: none;
-      width: 200px;
+      overflow: hidden;
+      text-align: center;
+      width: 300px;
     }
     &:hover {
-      border-bottom: 2px solid white;
+      border-bottom: 1px solid white;
       cursor: pointer;
     }
   }

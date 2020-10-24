@@ -1,6 +1,4 @@
 export default class DateMomentum{
-    static map = new Map(); 
-
     constructor(){
         this.timeBlock = document.querySelector('.momentum__time')
         this.dateBlock = document.querySelector('.momentum__date')
@@ -9,33 +7,11 @@ export default class DateMomentum{
         this.body = document.querySelector('.bodyBackground')
         this.firsLoad = true
         this.ArrForImg = this.getArrForImg()
-        this.counterForChangeImg = 0
     }
 
     getRealTime = () => {
-        return new Date();
-    }
-
-    displayDateTime = () => {
-        this.dateBlock.innerHTML = this.getDate()
-        this.timeBlock.innerHTML = this.getTime()
-    }
-    
-    getDate(){
-        let date = this.getRealTime()
-        let month = date.toLocaleString('en-US', {
-            month: 'long'
-        });
-        let weekDay = date.toLocaleString('en-US', {
-            weekday: 'long'
-        });
-        let day = date.getDay();
-        return `${weekDay}, ${day} ${month}` 
-    }
-
-    getTime = () => {
-        let date = this.getRealTime()
-        let time = date.toLocaleString('en-GB', {
+        let date = new Date();
+        let realTime = date.toLocaleString('en-GB', {
             hour:  'numeric',
             minute: 'numeric',
             second: 'numeric'
@@ -44,27 +20,50 @@ export default class DateMomentum{
             hour:  date.getHours(),
             minute: date.getMinutes(),
             second: date.getSeconds(),
+            realTime: realTime
         }
+        return objTime;
+    }
+    
+    getRealDate(){
+        let date = new Date();
+        let month = date.toLocaleString('en-US', {
+            month: 'long'
+        });
+        let weekDay = date.toLocaleString('en-US', {
+            weekday: 'long'
+        });
+        let day = date.toLocaleString('en-US', {
+            day: 'numeric'
+        });
+        return `${weekDay}, ${day} ${month}` 
+    }
 
-        this.setHelloImgOfDay(objTime)
-        return time;
+        // запускаем эту функцию раз в секунду
+    displayDateTime = () => {
+        let objRealTime = this.getRealTime()
+        this.dateBlock.innerHTML = this.getRealDate()
+        this.timeBlock.innerHTML = objRealTime.realTime
+        this.setHelloImgOfDay(objRealTime)
     }
 
     displayMainImage = (timesOfDay, image) => {
-            this.helloBlock.innerText = 'Good ' + timesOfDay + ',';
-            let src = `/src/assets/images/${timesOfDay.toLowerCase()}/${image}.jpg`
+            // this.helloBlock.innerText = 'Good ' + timesOfDay + ',';
+            let src = `./images/${timesOfDay.toLowerCase()}/${image}.jpg`
             const img = document.createElement('img');
             img.src = src;
             img.onload = () => {    
                 this.body.style.backgroundImage = `url(${src})`;  
-                // body.style.backgroundImage = `url(${src})`;
             }; 
     }
 
-    setHelloImgOfDay = (objTime) => {
-        
-        let timesOfDay;
-        let nextTime;
+    displayMainHello = (timesOfDay) => {
+        this.helloBlock.innerText = 'Good ' + timesOfDay + ', ';
+    }
+
+    // получить: Morning, Afternoon, Evening, Night
+    getTimesOfDay = (objTime) => {
+        let timesOfDay
         if(objTime.hour >= 6 && objTime.hour <= 11) {
             timesOfDay = 'Morning';
             this.nextTime = 12;
@@ -78,22 +77,27 @@ export default class DateMomentum{
             timesOfDay = 'Night';
             this.nextTime = 6
         }
+        return timesOfDay;
+    }
 
+    // устанавливает картинку и приветсвие
+    setHelloImgOfDay = (objTime) => {   
+        let timesOfDay;
         if (objTime.minute === 0 && objTime.second === 0) {
-            console.log(objTime, timesOfDay);
+            timesOfDay = this.getTimesOfDay(objTime)
             this.objTime = objTime
             this.displayMainImage(timesOfDay.toLowerCase(), this.ArrForImg[0])
+            this.displayMainHello(timesOfDay.toLowerCase())
             this.changeArrForImg()
         }
-
         if (this.firsLoad) {
+            timesOfDay = this.getTimesOfDay(objTime)
             this.objTime = objTime
             this.displayMainImage(timesOfDay.toLowerCase(), this.ArrForImg[0])
+            this.displayMainHello(timesOfDay.toLowerCase())
             this.firsLoad = false
             this.changeArrForImg()
         }
-        
-        return timesOfDay;
     }
 
     getArrForImg = () => {
@@ -113,7 +117,8 @@ export default class DateMomentum{
     }
 
     setListener = () => {
-        let hour = this.objTime.hour
+        let hour = this.objTime.hour // текущий час для смены картинки
+
         this.nextImgBlock.addEventListener('click', (e)=> {
             if (hour >= 23) hour = -1
             hour++
@@ -122,7 +127,10 @@ export default class DateMomentum{
                 minute: 0,
                 second: 0,
             }
-            this.setHelloImgOfDay(objTime)
+            this.displayMainImage(this.getTimesOfDay(objTime).toLowerCase(), this.ArrForImg[0])
+            this.changeArrForImg()
+            // this.setHelloImgOfDay(objTime) //если нужно менять приветсвие 
         })
+
     }
 }

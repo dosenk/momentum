@@ -4,6 +4,8 @@ const weatherDescription = document.querySelector('.weather-description');
 const humidity = document.querySelector('.weather-humidity');
 const speed = document.querySelector('.weather-speed');
 const city = document.querySelector('.city');
+const weatherError = document.querySelector('.weather-error');
+const weatherWrapper = document.querySelector('.wrapper');
 
 async function getWeather() {
 // console.log(localStorage.removeItem('city'));
@@ -20,9 +22,10 @@ async function getWeather() {
   const data = await res.json();
 
   if (data.cod === '404') {
-    alert(data.message)
+    // alert(data.message)
     // let city = localStorage.getItem('city')
-    console.log(localStorage.getItem('city'));
+    // console.log(localStorage.getItem('city'));
+    displayError(data.message)
     localStorage.setItem('city', localStorage.getItem('oldCity'))
     getWeather()
     return
@@ -37,6 +40,11 @@ async function getWeather() {
   weatherDescription.textContent = data.weather[0].description;
   humidity.textContent = 'Humidity: ' + data.main.humidity + ' %'
   speed.textContent = 'Wind speed: ' + data.wind.speed + ' m/s'
+}
+
+function displayError (msg) {
+  weatherError.style = ''
+  weatherWrapper.innerHTML += `<span id=msg>${msg[0].toUpperCase() + msg.slice(1)}</span>`
 }
 
 function setCity(event) {
@@ -66,3 +74,10 @@ city.addEventListener('mousedown', () => {
 city.addEventListener('blur', () => {
     city.textContent = localStorage.getItem('city')
 });
+
+document.addEventListener('click', (e)=> {
+  if (e.target.closest('.close-btn') || e.target.classList.contains('weather-error')) {
+    weatherError.style.display = 'none'
+    weatherWrapper.children[1].remove()
+  }
+})
