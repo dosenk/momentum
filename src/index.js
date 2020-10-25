@@ -1,24 +1,10 @@
 import './style.scss';
-import './classes/quote.js';
-import './classes/weather.js';
-import Person from './classes/person.js';
-import DateMomentum from './classes/dateMomentum.js';
-import ch_icon from './assets/images/icons/ch-icon.png'
+import './classes/quote';
+import './classes/weather';
+import Person from './classes/person';
+import DateMomentum from './classes/dateMomentum';
+import chIcon from './assets/images/icons/ch-icon.png';
 
-window.onload = () => {
-  renderingDom();
-  const person = new Person();
-  const dateMomentum = new DateMomentum();
-  person.addedListeners();
-  person.getName();
-  person.getFocus();
-  dateMomentum.displayDateTime();
-  setInterval(dateMomentum.displayDateTime, 1000);
-
-  dateMomentum.setListener();
-  // dateMomentum.ArrForImg
-  // console.log(dateMomentum.ArrForImg);
-};
 const createElem = (tagName, innerText = null, ...classes) => {
   const element = document.createElement(tagName);
   classes.forEach((className) => {
@@ -32,11 +18,11 @@ const renderingDom = () => {
   const bodyBackground = createElem('div', null, 'bodyBackground');
   const bodyWrapper = createElem('div', null, 'momentum');
   const bodyButton = createElem('img', 'change image', 'change-button');
-  bodyButton.setAttribute('src', ch_icon);
+  bodyButton.setAttribute('src', chIcon);
   const bodyWrapperContentDateTime = createElem('div', null, 'momentum__content_dateTime');
   const bodyWrapperTime = createElem('div', null, 'momentum__time');
   const bodyWrapperDate = createElem('div', null, 'momentum__date');
-  bodyWrapperContentDateTime.append(bodyWrapperTime, bodyWrapperDate)
+  bodyWrapperContentDateTime.append(bodyWrapperTime, bodyWrapperDate);
   const bodyWrapperHello = createElem('div', null, 'momentum__hello');
   const bodyWrapperHelloGreeting = createElem('span', '', 'momentum__hello_greeting');
   const bodyWrapperHelloName = createElem('span', ' [Enter Name]', 'momentum__hello_name');
@@ -50,4 +36,16 @@ const renderingDom = () => {
   bodyWrapperFocus.append(bodyWrapperFocusQuestion, bodyWrapperFocusAnswer);
   bodyWrapper.append(bodyWrapperContentDateTime, bodyWrapperHello, bodyWrapperFocus);
   body.append(bodyBackground, bodyWrapper, bodyButton);
+};
+
+window.onload = () => {
+  renderingDom();
+  const person = new Person();
+  const dateMomentum = new DateMomentum();
+  person.addedListeners();
+  person.getName();
+  person.getFocus();
+  dateMomentum.displayDateTime();
+  setInterval(dateMomentum.displayDateTime, 1000);
+  dateMomentum.setListener();
 };

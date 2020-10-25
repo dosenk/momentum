@@ -60,7 +60,6 @@ body {
     &__hello {
       font-size: 45px;
       color: aquamarine;
-      // width: 600px;
       height: 61px;
       white-space: nowrap;
       overflow: hidden;
@@ -71,7 +70,6 @@ body {
         align-items: center;
       }
       &_greeting {
-        // width: 380px;
         display: inline;
         text-align: right;
         margin-right: 10px;
@@ -106,10 +104,6 @@ body {
           border-bottom: 2px solid #ffffff;
           cursor: pointer;
         }
-        &::placeholder {
-          // outline: none;
-          // outline-style: none;
-        }
       }
     }
     &__focus {
@@ -125,7 +119,6 @@ body {
       @media screen and (max-width: 767px) {
         max-width: 300px;
       }
-      // justify-content: space-between;
       &_question {
         width: 100%;
         display: inline;
@@ -142,26 +135,20 @@ body {
         text-align: center;
         height: 28px;
         font-size: 25px;
+        transition: width 0.5s;
         @media screen and (max-width: 767px) {
           font-size: 18px;
           height: 20px;
-          // white-space: initial;
         }
         &:focus,
         &:active {
           border-bottom: 2px solid #ffffff;
           outline-style: none;
-          min-width: 300px;
-          width: 100%;
           overflow: hidden;
         }
         &:hover {
           border-bottom: 2px solid #ffffff;
           cursor: pointer;
-        }
-        &::placeholder {
-          // outline: none;
-          // outline-style: none;
         }
       }
     }

@@ -31,7 +31,7 @@
     position: absolute;
     right: 160px;
     // width: 280px;
-    transition: all 0.5s;
+    transition: width 0.5s;
     text-align: right;
 
     @media screen and (max-width: 767px) {
@@ -42,13 +42,13 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    &:focus,
-    &:active {
+    &:focus {
       border-bottom: 1px solid white;
       outline-style: none;
       overflow: hidden;
       text-align: center;
-      width: 300px;
+      width: 400px;
+      // max-width: 145px;
       @media screen and (max-width: 767px) {
         width: 130px;
         text-overflow: clip;
