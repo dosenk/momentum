@@ -9,7 +9,7 @@ const isDev = process.env.NODE_ENV === 'development';
 module.exports = {
   mode: 'development',
   entry: {
-    index: ['@babel/polyfill','./src/index.js']
+    index: ['@babel/polyfill', './src/index.js'],
   },
   output: {
     filename: '[name].[contenthash].js',
@@ -37,10 +37,10 @@ module.exports = {
     }),
     new CopyPlugin(
       {
-      patterns: [
-        { from: './src/assets/images', to: './images' },
-      ],
-    }
+        patterns: [
+          { from: './src/assets/images', to: './images' },
+        ],
+      },
     ),
   ],
   module: {
@@ -70,10 +70,10 @@ module.exports = {
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
         loader: 'file-loader',
-        // options: {
-        //   name: '[name].[ext]',
-        //   // outputPath: 'images',
-        // },
+        options: {
+          name: '[name].[ext]',
+          // outputPath: 'images',
+        },
       },
       {
         test: /\.html$/i,
@@ -87,15 +87,15 @@ module.exports = {
         test: /\.m?js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env'],
             plugins: [
-              ["@babel/plugin-proposal-class-properties", { "loose": true }],
+              ['@babel/plugin-proposal-class-properties', { loose: true }],
             ],
           },
-        }
-      }
+        },
+      },
     ],
   },
 };

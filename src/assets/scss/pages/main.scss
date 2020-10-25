@@ -11,7 +11,9 @@ body {
   flex-direction: column;
   row-gap: 15px;
   text-shadow: 1px 1px 2px black, 0 0 1em gray;
-  min-height: 625px;
+  min-height: 568px;
+  background: url("/src/assets/images/overlay.png");
+  background-size: 100% 100vh;
 
   color: bisque;
   .momentum {
@@ -23,12 +25,14 @@ body {
     flex-direction: column;
     row-gap: 40px;
     color: #ffffff;
-    @media screen and (max-width: 1279px) {
+    @media screen and (max-width: 1079px) {
       width: 867px;
+      height: 450px;
     }
     @media screen and (max-width: 767px) {
       width: 300px;
-      height: 400px;
+      height: 340px;
+      row-gap: 30px;
     }
     &__content_dateTime {
       margin: 0 auto;

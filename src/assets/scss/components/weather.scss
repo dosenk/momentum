@@ -10,6 +10,9 @@
   flex-direction: column;
   align-items: flex-end;
   justify-content: space-between;
+  @media screen and (max-width: 767px) {
+    margin-right: 5px;
+  }
   &-description,
   &-speed,
   &-humidity {
@@ -27,13 +30,13 @@
     white-space: nowrap;
     position: absolute;
     right: 160px;
-    // max-width: 280px;
+    // width: 280px;
     transition: all 0.5s;
     text-align: right;
 
     @media screen and (max-width: 767px) {
       font-size: 20px;
-      right: 118px;
+      right: 125px;
       height: 20px;
       max-width: 140px;
       overflow: hidden;
@@ -52,6 +55,7 @@
       }
     }
     &:hover {
+      // width: auto;
       border-bottom: 1px solid white;
       cursor: pointer;
     }
