@@ -4,14 +4,20 @@
   bottom: 0;
   left: 0;
   margin: 0;
-  width: 85%;
   height: 110px;
-  padding-left: 10%;
-  padding-right: 5%;
+  width: calc(100% - 110px);
+  padding-left: 100px;
+  padding-right: 10px;
   background-color: rgba(0, 0, 0, 0.4);
   color: aliceblue;
   .quote-info {
     margin-top: 25px;
+    @media screen and (max-width: 600px) {
+      margin-top: 13px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 15px;
+    }
   }
   figcaption,
   blockquote {
@@ -19,5 +25,12 @@
   }
   figcaption {
     text-align: right;
+  }
+  blockquote {
+    @media screen and (max-width: 600px) {
+      height: 80px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
 }

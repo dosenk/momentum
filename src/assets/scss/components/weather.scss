@@ -27,15 +27,29 @@
     white-space: nowrap;
     position: absolute;
     right: 160px;
-    width: 5em;
+    // max-width: 280px;
     transition: all 0.5s;
     text-align: right;
-    &:focus {
+
+    @media screen and (max-width: 767px) {
+      font-size: 20px;
+      right: 118px;
+      height: 20px;
+      max-width: 140px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    &:focus,
+    &:active {
       border-bottom: 1px solid white;
       outline-style: none;
       overflow: hidden;
       text-align: center;
       width: 300px;
+      @media screen and (max-width: 767px) {
+        width: 130px;
+        text-overflow: clip;
+      }
     }
     &:hover {
       border-bottom: 1px solid white;

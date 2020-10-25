@@ -22,6 +22,11 @@
     justify-content: center;
     color: black;
     position: relative;
+    @media screen and (max-width: 767px) {
+      width: 200px;
+      height: 120px;
+      font-size: 20px;
+    }
     .close-btn {
       position: absolute;
       top: -22px;

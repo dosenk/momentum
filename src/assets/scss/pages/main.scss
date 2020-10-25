@@ -1,6 +1,7 @@
 body {
   width: 100%;
   height: 100vh;
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,6 +11,7 @@ body {
   flex-direction: column;
   row-gap: 15px;
   text-shadow: 1px 1px 2px black, 0 0 1em gray;
+  min-height: 625px;
 
   color: bisque;
   .momentum {
@@ -21,45 +23,80 @@ body {
     flex-direction: column;
     row-gap: 40px;
     color: #ffffff;
+    @media screen and (max-width: 1279px) {
+      width: 867px;
+    }
+    @media screen and (max-width: 767px) {
+      width: 300px;
+      height: 400px;
+    }
     &__content_dateTime {
       margin: 0 auto;
-      width: 750px;
+      width: 700px;
       height: 240px;
+      @media screen and (max-width: 767px) {
+        width: 100%;
+        height: 140px;
+      }
     }
     &__time {
       font-size: 160px;
       height: 170px;
+      @media screen and (max-width: 767px) {
+        font-size: 70px;
+        height: 70px;
+      }
     }
     &__date {
       height: 40px;
+      @media screen and (max-width: 767px) {
+        font-size: 30px;
+      }
     }
     &__hello {
       font-size: 45px;
       color: aquamarine;
       // width: 600px;
-      height: 110px;
+      height: 61px;
       white-space: nowrap;
       overflow: hidden;
       display: flex;
+      @media screen and (max-width: 767px) {
+        flex-direction: column;
+        height: 80px;
+        align-items: center;
+      }
       &_greeting {
-        width: 380px;
+        // width: 380px;
         display: inline;
         text-align: right;
         margin-right: 10px;
+        @media screen and (max-width: 767px) {
+          font-size: 30px;
+          height: 38px;
+          text-align: center;
+        }
       }
       &_name {
-        // text-align: ;
-        // width: 300px;
         max-width: 400px;
+        width: min-content;
         display: inline;
-        position: relative;
         white-space: nowrap;
+        height: 45px;
+        transition: width 0.5s;
+        @media screen and (max-width: 1279px) {
+          max-width: 350px;
+        }
+        @media screen and (max-width: 767px) {
+          max-width: 300px;
+        }
         &:focus,
         &:active {
           border-bottom: 2px solid #ffffff;
           outline-style: none;
           min-width: 200px;
-          width: 100%;
+          width: max-content;
+          overflow: hidden;
         }
         &:hover {
           border-bottom: 2px solid #ffffff;
@@ -77,30 +114,50 @@ body {
       flex-direction: column;
       align-items: center;
       width: 600px;
-      height: 200px;
+      height: 100px;
       text-align: center;
-      justify-content: space-between;
-      & span {
-        display: inline-block;
-        &:nth-child(1) {
-          width: 500px;
+      row-gap: 25px;
+      white-space: nowrap;
+      @media screen and (max-width: 767px) {
+        max-width: 300px;
+      }
+      // justify-content: space-between;
+      &_question {
+        width: 100%;
+        display: inline;
+        text-align: center;
+        @media screen and (max-width: 767px) {
+          font-size: 20px;
+          white-space: initial;
         }
-        &:nth-child(2) {
-          max-width: 100%;
-          &:focus {
-            border-bottom: 2px solid #ffffff;
-            outline-style: none;
-            white-space: nowrap;
-            min-width: 200px;
-          }
-          &:hover {
-            border-bottom: 2px solid #ffffff;
-            cursor: pointer;
-          }
-          &::placeholder {
-            // outline: none;
-            // outline-style: none;
-          }
+      }
+      &_answer {
+        color: aquamarine;
+        max-width: 100%;
+        display: inline;
+        text-align: center;
+        height: 28px;
+        font-size: 25px;
+        @media screen and (max-width: 767px) {
+          font-size: 18px;
+          height: 20px;
+          // white-space: initial;
+        }
+        &:focus,
+        &:active {
+          border-bottom: 2px solid #ffffff;
+          outline-style: none;
+          min-width: 300px;
+          width: 100%;
+          overflow: hidden;
+        }
+        &:hover {
+          border-bottom: 2px solid #ffffff;
+          cursor: pointer;
+        }
+        &::placeholder {
+          // outline: none;
+          // outline-style: none;
         }
       }
     }

@@ -12,7 +12,7 @@ async function getWeather() {
 // storage.clear();
   
   if (localStorage.getItem('city') === null) {
-      city.textContent = 'Минск'
+      city.textContent = 'Minsk'
       localStorage.setItem('city', city.textContent)
   }  else {
     city.textContent = localStorage.getItem('city')

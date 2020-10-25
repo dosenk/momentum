@@ -15,18 +15,18 @@ export default class Person {
 
   setName = (e) => {
     // console.log();
-    let name = ' ' + localStorage.getItem('name')
+    let name = localStorage.getItem('name')
   if (e.type === 'keypress') {
     if (e.which == 13 || e.keyCode == 13) {
       if (e.target.innerText.trim() === '') {
-        e.target.innerText = name;
+        e.target.innerText = name !== null ? (' ' +  name) : '[Enter Name]';
       } else {
       localStorage.setItem('name', e.target.innerText);
     }
       this.name.blur();
     }
   } else {
-    e.target.innerText = name !== null ? name : '[Enter Name]';
+    e.target.innerText = name !== null ? (' ' +  name) : '[Enter Name]';
   }
 }
 
@@ -40,20 +40,21 @@ getFocus = () => {
 
 // Set Focus
 setFocus = (e) => {
-  
+  let focus = localStorage.getItem('focus')
   if (e.type === 'keypress') {
     
     // Make sure enter is pressed
     if (e.which == 13 || e.keyCode == 13) {
       if (e.target.innerText.trim() === '') {
-        e.target.innerText = localStorage.getItem('focus');
+        // e.target.innerText = localStorage.getItem('focus');
+        e.target.innerText = focus !== null ? (' ' +  focus) : '[Enter Focus]';
       } else {
         localStorage.setItem('focus', e.target.innerText);
       }
       this.focus.blur();
     }
   } else {
-        e.target.innerText = localStorage.getItem('focus');
+        e.target.innerText = focus !== null ? (' ' +  focus) : '[Enter Focus]';
   }
 
   
@@ -64,13 +65,10 @@ addedListeners = () => {
   this.name.addEventListener('blur', this.setName);
   this.focus.addEventListener('keypress', this.setFocus);
   this.focus.addEventListener('blur', this.setFocus);
-  this.name.addEventListener('click', (event) => {
-
-
+  this.name.addEventListener('mousedown', (event) => {
     event.target.innerText = ''
   });
-  this.focus.addEventListener('click', (event) => {
-
+  this.focus.addEventListener('mousedown', (event) => {
     event.target.innerText = ''
   });
 }
