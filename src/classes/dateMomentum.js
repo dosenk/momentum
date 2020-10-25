@@ -105,7 +105,7 @@ export default class DateMomentum {
   getArrForImg = () => {
     const arrMain = [];
     let num;
-    for (let i = 1; i <= 20; i += 1) {
+    for (let i = 1; i <= 24; i += 1) {
       if (i < 10) num = (`0${i}`);
       else num = i;
       arrMain.push(num);
@@ -122,7 +122,7 @@ export default class DateMomentum {
       this.nextImgBlock.disabled = true
       setTimeout(()=> {
         this.nextImgBlock.disabled = false
-      }, 1100)
+      }, 1300)
       if (this.hour >= 23) this.hour  = -1;
       this.hour  += 1;
       const objTime = {
@@ -130,7 +130,6 @@ export default class DateMomentum {
         minute: 0,
         second: 0,
       };
-
       this.displayMainImage(this.getTimesOfDay(objTime).toLowerCase(), this.ArrForImg[0])
       this.changeArrForImg();
   }
