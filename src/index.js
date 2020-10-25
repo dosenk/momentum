@@ -17,8 +17,7 @@ const renderingDom = () => {
   const body = document.querySelector('body');
   const bodyBackground = createElem('div', null, 'bodyBackground');
   const bodyWrapper = createElem('div', null, 'momentum');
-  const bodyButton = createElem('img', 'change image', 'change-button');
-  bodyButton.setAttribute('src', chIcon);
+  const bodyButton = createElem('button', null, 'change-button');
   const bodyWrapperContentDateTime = createElem('div', null, 'momentum__content_dateTime');
   const bodyWrapperTime = createElem('div', null, 'momentum__time');
   const bodyWrapperDate = createElem('div', null, 'momentum__date');

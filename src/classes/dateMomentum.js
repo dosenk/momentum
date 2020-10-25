@@ -55,6 +55,7 @@ export default class DateMomentum {
     img.src = src;
     img.onload = () => {
       this.body.style.backgroundImage = `url(${src})`;
+      return true
     };
   }
 
@@ -117,20 +118,25 @@ export default class DateMomentum {
     this.ArrForImg.push(first);
   }
 
-  setListener = () => {
-    let { hour } = this.objTime; // текущий час для смены картинки
-
-    this.nextImgBlock.addEventListener('click', () => {
-      if (hour >= 23) hour = -1;
-      hour += 1;
+  changeImg = () => {
+      this.nextImgBlock.disabled = true
+      setTimeout(()=> {
+        this.nextImgBlock.disabled = false
+      }, 1100)
+      if (this.hour >= 23) this.hour  = -1;
+      this.hour  += 1;
       const objTime = {
-        hour,
+        hour: this.hour,
         minute: 0,
         second: 0,
       };
-      this.displayMainImage(this.getTimesOfDay(objTime).toLowerCase(), this.ArrForImg[0]);
+
+      this.displayMainImage(this.getTimesOfDay(objTime).toLowerCase(), this.ArrForImg[0])
       this.changeArrForImg();
-      // this.setHelloImgOfDay(objTime) //если нужно менять приветсвие
-    });
+  }
+
+  setListener = () => {
+    this.hour = this.objTime.hour; // текущий час для смены картинки
+    this.nextImgBlock.addEventListener('click', this.changeImg)
   }
 }
