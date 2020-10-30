@@ -32,7 +32,7 @@ body {
     @media screen and (max-width: 767px) {
       width: 300px;
       height: 340px;
-      row-gap: 30px;
+      row-gap: 15px;
     }
     &__content_dateTime {
       margin: 0 auto;
@@ -66,7 +66,7 @@ body {
       display: flex;
       @media screen and (max-width: 767px) {
         flex-direction: column;
-        height: 80px;
+        height: 100px;
         align-items: center;
       }
       &_greeting {
